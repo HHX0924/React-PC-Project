@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="layou布局">
+    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="二级路由配置 嵌套&#10;路由跳转配置Link">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Layout/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/idnex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/idnex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/login.Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/login.Store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +80,8 @@
       <workItem from="1688458653898" duration="5166000" />
       <workItem from="1688720574569" duration="587000" />
       <workItem from="1688781486985" duration="3029000" />
-      <workItem from="1688802259641" duration="3708000" />
+      <workItem from="1688802259641" duration="3832000" />
+      <workItem from="1688817100882" duration="8036000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录模块">
       <created>1688463959720</created>
@@ -100,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688784212503</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="二级路由配置 嵌套&#10;路由跳转配置Link">
+      <created>1688806984532</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688806984532</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +134,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成登录模块" />
     <MESSAGE value="layou布局" />
-    <option name="LAST_COMMIT_MESSAGE" value="layou布局" />
+    <MESSAGE value="二级路由配置 嵌套&#10;路由跳转配置Link" />
+    <option name="LAST_COMMIT_MESSAGE" value="二级路由配置 嵌套&#10;路由跳转配置Link" />
   </component>
 </project>

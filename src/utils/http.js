@@ -9,7 +9,7 @@ const http = axios.create({
 })
 
 //添加请求拦截器
-axios.interceptors.request.use((config) => {
+http.interceptors.request.use((config) => {
     const token = getToken()
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
@@ -19,8 +19,9 @@ axios.interceptors.request.use((config) => {
     return Promise.reject(error)
 })
 
+
 //添加响应拦截器
-axios.interceptors.response.use((response) => {
+http.interceptors.response.use((response) => {
     return response.data
 },(error) => {
     return Promise.reject(error)

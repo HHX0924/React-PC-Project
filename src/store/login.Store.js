@@ -17,6 +17,7 @@ class LoginStore {
         //存入localstorage
         setToken(this.token)
     }
+
 }
 
 export default LoginStore
