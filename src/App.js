@@ -3,7 +3,9 @@ import Login from "./pages/Login";
 import Layout from "./pages/Layout";
 import React from 'react';
 import {AuthComponent} from "@/components/AuthComponents";
-
+import Publish from "@/pages/Publish";
+import Article from "@/pages/Article";
+import Home from "@/pages/Home";
 function App() {
   return (
       //路由配置
@@ -16,6 +18,9 @@ function App() {
                         <Layout />
                     </AuthComponent>
                 }>
+                    <Route index element={<Home />}></Route>
+                    <Route path='article' element={<Article />}></Route>
+                    <Route path='publish' element={<Publish />}></Route>
                 </Route>
                 <Route path='/login' element={<Login />}></Route>
             </Routes>
