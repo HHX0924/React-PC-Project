@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="完成登录模块">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="layou布局" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +72,7 @@
       <workItem from="1688384801663" duration="3028000" />
       <workItem from="1688458653898" duration="5166000" />
       <workItem from="1688720574569" duration="587000" />
-      <workItem from="1688781486985" duration="2174000" />
+      <workItem from="1688781486985" duration="2224000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录模块">
       <created>1688463959720</created>
@@ -85,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688463959720</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="layou布局">
+      <created>1688784152840</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688784152840</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成登录模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成登录模块" />
+    <MESSAGE value="layou布局" />
+    <option name="LAST_COMMIT_MESSAGE" value="layou布局" />
   </component>
 </project>
