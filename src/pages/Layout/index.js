@@ -6,7 +6,7 @@ import {
     LogoutOutlined
 } from '@ant-design/icons'
 import './index.scss'
-import {Outlet, Link, useLocation} from "react-router-dom";
+import {Outlet, Link, useLocation, useNavigate} from "react-router-dom";
 import { useStore } from "@/store/idnex";
 import {useEffect} from "react";
 import {observer} from "mobx-react-lite";
@@ -18,18 +18,30 @@ const { Header, Sider } = Layout
 const GeekLayout = () => {
     // 获取当前的path
     const location = useLocation()
-    const { userStore } = useStore()
+    const { userStore, loginStore } = useStore()
     useEffect(() => {
         userStore.getUserInfo()
     },[userStore])
+
+    //确定退出
+    const navigate = useNavigate()
+    const onConfirm = () => {
+        //退出登录 删除token 跳回到登录
+        loginStore.loginOut()
+        navigate('/login')
+    }
     return (
         <Layout>
             <Header className="header">
                 <div className="logo" />
                 <div className="user-info">
-                    <span className="user-name">{userStore.useInfo.name}</span>
+                    <span className="user-name">{userStore.userInfo.name}</span>
                     <span className="user-logout">
-            <Popconfirm title="是否确认退出？" okText="退出" cancelText="取消">
+            <Popconfirm
+                onConfirm={onConfirm}
+                title="是否确认退出？"
+                okText="退出"
+                cancelText="取消">
               <LogoutOutlined /> 退出
             </Popconfirm>
           </span>

@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx";
-import {http, setToken, getToken} from '@/utils/idnex';
+import {http, setToken, getToken, removeToken} from '@/utils/idnex';
 
 class LoginStore {
     token = getToken() || ''
@@ -16,6 +16,10 @@ class LoginStore {
         this.token = res.data.token
         //存入localstorage
         setToken(this.token)
+    }
+    loginOut = () => {
+        this.token = ''
+        removeToken()
     }
 
 }

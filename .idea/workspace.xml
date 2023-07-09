@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="二级路由配置 嵌套&#10;路由跳转配置Link">
+    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="退出登录&#10;401token实现&#10;ECharts引入和基础使用">
+      <change afterPath="$PROJECT_DIR$/src/utils/history.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Layout/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Layout/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/idnex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/idnex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/login.Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/login.Store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user.Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user.Store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,23 +47,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/react-pc-112/src/pages/Layout&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/react-pc-112/src/pages/Layout",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\react-pc-112\src\pages\Layout" />
@@ -81,7 +87,8 @@
       <workItem from="1688720574569" duration="587000" />
       <workItem from="1688781486985" duration="3029000" />
       <workItem from="1688802259641" duration="3832000" />
-      <workItem from="1688817100882" duration="8036000" />
+      <workItem from="1688817100882" duration="8185000" />
+      <workItem from="1688891154403" duration="3761000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录模块">
       <created>1688463959720</created>
@@ -111,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688806984532</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="菜单反向高亮&#10;获取用户数据">
+      <created>1688825326519</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1688825326519</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +149,8 @@
     <MESSAGE value="完成登录模块" />
     <MESSAGE value="layou布局" />
     <MESSAGE value="二级路由配置 嵌套&#10;路由跳转配置Link" />
-    <option name="LAST_COMMIT_MESSAGE" value="二级路由配置 嵌套&#10;路由跳转配置Link" />
+    <MESSAGE value="菜单反向高亮&#10;获取用户数据" />
+    <MESSAGE value="退出登录&#10;401token实现&#10;ECharts引入和基础使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="退出登录&#10;401token实现&#10;ECharts引入和基础使用" />
   </component>
 </project>
