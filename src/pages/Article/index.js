@@ -19,17 +19,61 @@ const { Option } = Select
 const { RangePicker } = DatePicker
 
 const Article = () => {
+    //频带列表管理
     const [channelList, setChannelList] = useState([])
-    const loadChannelList = async () => {
-        const res = await http.get('/channels')
-        setChannelList(res.data.channels)
-    }
+
     useEffect(() => {
+        const loadChannelList = async () => {
+            const res = await http.get('/channels')
+            setChannelList(res.data.channels)
+        }
         loadChannelList()
     },[])
-    const onFinish = (values) => {
 
+    //文章列表管理 统一管理数据 获取的数据
+    const [articleData, setArticleData] = useState({
+        list:[],//文章列表
+        count: 0 //文章数量
+    })
+
+    //文章参数管理
+    const [params, setParams] = useState({
+        page: 1,
+        per_page: 10
+    })
+
+    useEffect(() => {
+        const loadList = async () => {
+            const res = await http.get('/mp/articles',{params})
+            console.log(res)
+            const { results, total_count} = res.data
+            setArticleData({
+                list: results,
+                count: total_count
+            })
+        }
+        loadList()
+    },[params])
+    const onFinish = (values) => {
         console.log(values)
+        const { channel_id, date, status } = values
+        //数据处理
+        const _params = {}
+        if (status !== -1) {
+            _params.status = status
+        }
+        if (channel_id) {
+            _params.channel_id = channel_id
+        }
+        if (date) {
+            _params.begin_pubdate = date[0].format('YYYY-MM-DD')
+            _params.end_pubdate = date[1].format('YYYY-MM-DD')
+        }
+        //修改params 接口重新发送 对象的合并是一个整体覆盖
+        setParams({
+            ...params,
+            ..._params
+        })
     }
     const columns = [
         {
@@ -37,7 +81,7 @@ const Article = () => {
             dataIndex: 'cover',
             width:120,
             render: cover => {
-                return <img src={cover || img404} width={80} height={60} alt="" />
+                return <img src={cover.images[0] || img404} width={80} height={60} alt="" />
             }
         },
         {
@@ -83,20 +127,7 @@ const Article = () => {
             }
         }
     ]
-    const data = [
-        {
-            id: '8218',
-            comment_count: 0,
-            cover: {
-                images:['http://geek.itheima.net/resources/images/15.jpg'],
-            },
-            like_count: 0,
-            pubdate: '2019-03-11 09:00:00',
-            read_count: 2,
-            status: 2,
-            title: 'wkwebview离线化加载h5资源解决方案'
-        }
-    ]
+
     return (
         <div>
             {/*筛选区域*/}
@@ -149,8 +180,8 @@ const Article = () => {
                 </Form>
             </Card>
             {/*文章列表区域*/}
-            <Card title={`根据筛选条件共查询到 count 条结果：`}>
-                <Table rowKey="id" columns={columns} dataSource={data} />
+            <Card title={`根据筛选条件共查询到 ${articleData.count} 条结果：`}>
+                <Table rowKey="id" columns={columns} dataSource={articleData.list} />
             </Card>
         </div>
     )
