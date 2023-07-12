@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {
     Card,
     Breadcrumb,
@@ -9,26 +9,20 @@ import {
     Select,
     Table,
     Tag,
-    Space } from 'antd'
+    Space, Popconfirm
+} from 'antd'
 import './index.scss'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import img404 from '@/assets/error.png'
 import {useEffect, useState} from "react";
 import {http} from "@/utils/idnex";
+import {useStore} from "@/store/idnex";
+import {observer} from "mobx-react-lite";
 const { Option } = Select
 const { RangePicker } = DatePicker
 
 const Article = () => {
-    //频带列表管理
-    const [channelList, setChannelList] = useState([])
-
-    useEffect(() => {
-        const loadChannelList = async () => {
-            const res = await http.get('/channels')
-            setChannelList(res.data.channels)
-        }
-        loadChannelList()
-    },[])
+    const { channelStore } = useStore()
 
     //文章列表管理 统一管理数据 获取的数据
     const [articleData, setArticleData] = useState({
@@ -75,6 +69,27 @@ const Article = () => {
             ..._params
         })
     }
+    const pageChange = (page) => {
+        setParams({
+            ...params,
+            page
+        })
+        console.log(page)
+    }
+    const delArticle = async (data) => {
+        console.log(data)
+        await http.delete(`/mp/articles/${data.id}`)
+        //刷新列表
+        setParams({
+            ...params,
+            page: 1
+        })
+    }
+    //跳转编辑页面
+    const navigate = useNavigate() //不能放函数里
+    const goPublish = (data) => {
+        navigate(`/publish?id=${data.id}`)
+    }
     const columns = [
         {
             title: '封面',
@@ -115,13 +130,25 @@ const Article = () => {
             render: data => {
                 return (
                     <Space size="middle">
-                        <Button type="primary" shape="circle" icon={<EditOutlined />} />
                         <Button
                             type="primary"
-                            danger
                             shape="circle"
-                            icon={<DeleteOutlined />}
+                            icon={<EditOutlined />}
+                            onClick={() => goPublish(data)}
                         />
+                        <Popconfirm
+                            title="确认删除该条文章吗?"
+                            onConfirm={() => delArticle(data)}
+                            okText="确认"
+                            cancelText="取消"
+                        >
+                            <Button
+                                type="primary"
+                                danger
+                                shape="circle"
+                                icon={<DeleteOutlined />}
+                            />
+                        </Popconfirm>
                     </Space>
                 )
             }
@@ -160,7 +187,7 @@ const Article = () => {
                             placeholder="请选择文章频道"
                             style={{ width: 120 }}
                         >
-                            {channelList.map(item =>
+                            {channelStore.channelList.map(item =>
                                 <Option
                                 key={item.id}
                                 value={item.id}>{item.name}</Option>)}
@@ -181,10 +208,21 @@ const Article = () => {
             </Card>
             {/*文章列表区域*/}
             <Card title={`根据筛选条件共查询到 ${articleData.count} 条结果：`}>
-                <Table rowKey="id" columns={columns} dataSource={articleData.list} />
+                <Table
+                    rowKey="id"
+                    columns={columns}
+                    dataSource={articleData.list}
+                    pagination={
+                        {
+                            pageSize:params.per_page,
+                            total:articleData.count,
+                            onChange:pageChange
+                        }
+                    }
+                />
             </Card>
         </div>
     )
 }
 
-export default Article
+export default observer(Article)

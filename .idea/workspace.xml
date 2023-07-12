@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="echart组件封装&#10;筛选区结构搭建&#10;table列表区域结构搭建&#10;频道列表渲染">
+    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="渲染文章列表&#10;增加筛选条件">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/react-pc-112.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/React_Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Article/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Article/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Publish/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Publish/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/idnex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/idnex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,26 +49,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Notification.DisplayName-DoNotAsk-JavaScript: Code Vision Performance": "JavaScript: Code Vision 性能观察程序",
-    "Notification.DoNotAsk-JavaScript: Code Vision Performance": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/react-pc-112/src/pages/Layout",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-JavaScript: Code Vision Performance&quot;: &quot;JavaScript: Code Vision 性能观察程序&quot;,
+    &quot;Notification.DoNotAsk-JavaScript: Code Vision Performance&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/React_Projict&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\react-pc-112\src\pages\Layout" />
@@ -88,7 +97,11 @@
       <workItem from="1688972336438" duration="5799000" />
       <workItem from="1688991957371" duration="1730000" />
       <workItem from="1689043568943" duration="930000" />
-      <workItem from="1689077766116" duration="1734000" />
+      <workItem from="1689077766116" duration="2332000" />
+      <workItem from="1689126588548" duration="4562000" />
+      <workItem from="1689149265451" duration="5000" />
+      <workItem from="1689149331870" duration="4169000" />
+      <workItem from="1689163164578" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录模块">
       <created>1688463959720</created>
@@ -139,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688978270322</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="渲染文章列表&#10;增加筛选条件">
+      <created>1689079650990</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689079650990</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +186,7 @@
     <MESSAGE value="菜单反向高亮&#10;获取用户数据" />
     <MESSAGE value="退出登录&#10;401token实现&#10;ECharts引入和基础使用" />
     <MESSAGE value="echart组件封装&#10;筛选区结构搭建&#10;table列表区域结构搭建&#10;频道列表渲染" />
-    <option name="LAST_COMMIT_MESSAGE" value="echart组件封装&#10;筛选区结构搭建&#10;table列表区域结构搭建&#10;频道列表渲染" />
+    <MESSAGE value="渲染文章列表&#10;增加筛选条件" />
+    <option name="LAST_COMMIT_MESSAGE" value="渲染文章列表&#10;增加筛选条件" />
   </component>
 </project>

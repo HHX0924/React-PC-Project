@@ -3,11 +3,13 @@
 import LoginStore from './login.Store'
 import React from "react";
 import UserStore from "@/store/user.Store";
+import ChannelStore from "@/store/channel.Store";
 //1.声明一个rootStore
 class RootStore {
     constructor() {
         this.loginStore = new LoginStore()
         this.userStore = new UserStore()
+        this.channelStore = new ChannelStore()
     }
 }
 //实例化跟
