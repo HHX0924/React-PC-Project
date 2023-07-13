@@ -7,17 +7,16 @@ import {
     Input,
     Upload,
     Space,
-    Select
+    Select, message
 } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import {Link, useNavigate, useSearchParams} from 'react-router-dom'
 import './index.scss'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {useStore} from "@/store/idnex";
 import {observer} from "mobx-react-lite";
-import {useState} from "react";
-import {values} from "mobx";
+import {useRef, useState} from "react";
 import {http} from "@/utils/idnex";
 
 const { Option } = Select
@@ -33,14 +32,28 @@ const Publish = () => {
         // 最后一次触发时返回值中有response
         //最终fileList中存放的数据有response.data.url
         setFileList(fileList)
+        //同时把图片列表存入仓库一份
+        cacheImgList.current = fileList
     }
+    //使用userRef声明一个暂存仓库
+    const cacheImgList = useRef()
     //图片数量
-
     const [imgCount,setImgCount] = useState(1)
     const radioChange = (e) => {
-        setImgCount(e.target.value)
+        const ravValue = e.target.value
+        setImgCount(ravValue)
+        //这里的判断采用原始值 不采用useState修改过后的imgcount
+        //修改之后的数据无法同步获取修改之后的新值
+        //从仓库里面取出对应的数量
+        //交给用来渲染图片列表的fileList 调用setFileList
+        if (ravValue === 1) {
+            const img = cacheImgList.current ? cacheImgList.current[0] : []
+            setFileList([img])
+        } else if(ravValue === 3) {
+            setFileList(cacheImgList.current)
+        }
     }
-
+    const navigate = useNavigate()
     const onFinish = async (values) => {
         console.log(values)
         const { channel_id, content, title, type } = values
@@ -55,7 +68,13 @@ const Publish = () => {
             }
         }
         await http.post('/mp/articles?draft=false', params)
+        navigate('/article')
+        message.success('发布成功')
     }
+    //编辑功能 文爱适配 路由参数id为判断条件
+    const [params] = useSearchParams()
+    const id = params.get('id')
+
     return (
         <div className="publish">
             <Card
@@ -64,7 +83,7 @@ const Publish = () => {
                         <Breadcrumb.Item>
                             <Link to="/home">首页</Link>
                         </Breadcrumb.Item>
-                        <Breadcrumb.Item>发布文章</Breadcrumb.Item>
+                        <Breadcrumb.Item>{id?'编辑':'发布'}文章</Breadcrumb.Item>
                     </Breadcrumb>
                 }
             >
@@ -139,7 +158,7 @@ const Publish = () => {
                     <Form.Item wrapperCol={{ offset: 4 }}>
                         <Space>
                             <Button size="large" type="primary" htmlType="submit">
-                                发布文章
+                                {id?'提交修改':'发布文章'}
                             </Button>
                         </Space>
                     </Form.Item>
