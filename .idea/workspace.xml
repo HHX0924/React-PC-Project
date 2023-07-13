@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="渲染文章列表&#10;增加筛选条件">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/react-pc-112.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/React_Project.iml" afterDir="false" />
+    <list default="true" id="7d4a6e98-06f1-4d76-8efc-077c08af1c6b" name="更改" comment="分页器&#10;删除&#10;跳转编辑&#10;富文本编辑器">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Article/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Article/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Layout/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Publish/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Publish/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/idnex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/idnex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +94,8 @@
       <workItem from="1689126588548" duration="4562000" />
       <workItem from="1689149265451" duration="5000" />
       <workItem from="1689149331870" duration="4169000" />
-      <workItem from="1689163164578" duration="311000" />
+      <workItem from="1689163164578" duration="506000" />
+      <workItem from="1689212198224" duration="2435000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录模块">
       <created>1688463959720</created>
@@ -159,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689079650990</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="分页器&#10;删除&#10;跳转编辑&#10;富文本编辑器">
+      <created>1689163601523</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689163601523</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +188,7 @@
     <MESSAGE value="退出登录&#10;401token实现&#10;ECharts引入和基础使用" />
     <MESSAGE value="echart组件封装&#10;筛选区结构搭建&#10;table列表区域结构搭建&#10;频道列表渲染" />
     <MESSAGE value="渲染文章列表&#10;增加筛选条件" />
-    <option name="LAST_COMMIT_MESSAGE" value="渲染文章列表&#10;增加筛选条件" />
+    <MESSAGE value="分页器&#10;删除&#10;跳转编辑&#10;富文本编辑器" />
+    <option name="LAST_COMMIT_MESSAGE" value="分页器&#10;删除&#10;跳转编辑&#10;富文本编辑器" />
   </component>
 </project>

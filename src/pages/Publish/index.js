@@ -17,6 +17,8 @@ import 'react-quill/dist/quill.snow.css';
 import {useStore} from "@/store/idnex";
 import {observer} from "mobx-react-lite";
 import {useState} from "react";
+import {values} from "mobx";
+import {http} from "@/utils/idnex";
 
 const { Option } = Select
 
@@ -31,6 +33,28 @@ const Publish = () => {
         // 最后一次触发时返回值中有response
         //最终fileList中存放的数据有response.data.url
         setFileList(fileList)
+    }
+    //图片数量
+
+    const [imgCount,setImgCount] = useState(1)
+    const radioChange = (e) => {
+        setImgCount(e.target.value)
+    }
+
+    const onFinish = async (values) => {
+        console.log(values)
+        const { channel_id, content, title, type } = values
+        const params = {
+            channel_id,
+            content,
+            title,
+            type,
+            cover: {
+                type:type,
+                images:fileList.map(item => item.response.data.url)
+            }
+        }
+        await http.post('/mp/articles?draft=false', params)
     }
     return (
         <div className="publish">
@@ -48,6 +72,7 @@ const Publish = () => {
                     labelCol={{ span: 4 }}
                     wrapperCol={{ span: 16 }}
                     initialValues={{ type: 1 }}
+                    onFinish={onFinish}
                 >
                     <Form.Item
                         label="标题"
@@ -73,25 +98,32 @@ const Publish = () => {
 
                     <Form.Item label="封面">
                         <Form.Item name="type">
-                            <Radio.Group>
+                            <Radio.Group
+                                onChange={radioChange}
+                            >
                                 <Radio value={1}>单图</Radio>
                                 <Radio value={3}>三图</Radio>
                                 <Radio value={0}>无图</Radio>
                             </Radio.Group>
                         </Form.Item>
-                        <Upload
-                            name="image"
-                            listType="picture-card"
-                            className="avatar-uploader"
-                            showUploadList
-                            action="http://geek.itheima.net/v1_0/upload"
-                            fileList={fileList}
-                            onChange={onUploadChange}
-                        >
-                            <div style={{ marginTop: 8 }}>
-                                <PlusOutlined />
-                            </div>
-                        </Upload>
+                        { imgCount >0 && (
+                            <Upload
+                                name="image"
+                                listType="picture-card"
+                                className="avatar-uploader"
+                                showUploadList
+                                action="http://geek.itheima.net/v1_0/upload"
+                                fileList={fileList}
+                                onChange={onUploadChange}
+                                multiple={imgCount > 1}
+                                maxCount={imgCount}
+                            >
+                                <div style={{ marginTop: 8 }}>
+                                    <PlusOutlined />
+                                </div>
+                            </Upload>
+                        )}
+
                     </Form.Item>
                     {/*这里的富文本编辑器在FromItem里面
                         输入的内容可在onfinish中获取
