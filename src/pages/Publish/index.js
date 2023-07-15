@@ -16,8 +16,9 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {useStore} from "@/store/idnex";
 import {observer} from "mobx-react-lite";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {http} from "@/utils/idnex";
+import {type} from "@testing-library/user-event/dist/type";
 
 const { Option } = Select
 
@@ -31,9 +32,19 @@ const Publish = () => {
         // upload组件会在上传前、上传中和上传完成三个阶段触发onchange函数，
         // 最后一次触发时返回值中有response
         //最终fileList中存放的数据有response.data.url
-        setFileList(fileList)
         //同时把图片列表存入仓库一份
-        cacheImgList.current = fileList
+        const formatList = fileList.map(file => {
+            //上传完毕 取url
+            if (file.response) {
+                return {
+                    url:file.response.data.url
+                }
+            }
+            //上传中不做处理
+            return file
+        })
+        setFileList(formatList)
+        cacheImgList.current = formatList
     }
     //使用userRef声明一个暂存仓库
     const cacheImgList = useRef()
@@ -64,16 +75,44 @@ const Publish = () => {
             type,
             cover: {
                 type:type,
-                images:fileList.map(item => item.response.data.url)
+                images:fileList.map(item => item.url)
             }
         }
-        await http.post('/mp/articles?draft=false', params)
+        if (id) {
+            await http.put(`/mp/articles/${id}?draft=false`, params)
+        } else {
+            await http.post('/mp/articles?draft=false', params)
+        }
         navigate('/article')
-        message.success('发布成功')
+        message.success(`${id ? '更新成功' : '发布成功'}`)
     }
     //编辑功能 文爱适配 路由参数id为判断条件
     const [params] = useSearchParams()
     const id = params.get('id')
+    //数据回填 id调用接口 1表单回填 2暂存列表 3Upload组件的fileList
+    const form = useRef(null)
+    useEffect(() => {
+        const loadDetail = async () => {
+            const res = await http.get(`/mp/articles/${id}`)
+            const data = res.data
+            console.log(res)
+            //表单数据回填 form实例方法
+            form.current.setFieldsValue({...data,type:data.cover.type})
+            const formatImgList = data.cover.images.map(url=>{
+                    return {
+                        url,
+                    }
+                })
+            //调用setFileList 回填upload
+            setFileList(formatImgList)
+            //暂存列表 （和fileList回显列表保持数据结构统一）
+            cacheImgList.current = formatImgList
+        }
+        if (id) {
+            loadDetail()
+        }
+
+    },[id])
 
     return (
         <div className="publish">
@@ -92,6 +131,7 @@ const Publish = () => {
                     wrapperCol={{ span: 16 }}
                     initialValues={{ type: 1 }}
                     onFinish={onFinish}
+                    ref={form}
                 >
                     <Form.Item
                         label="标题"
